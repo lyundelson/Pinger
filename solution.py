@@ -144,30 +144,31 @@ def ping(host, timeout=1):
     for i in range(0, len(delayList)):
         if(delayList[i] < min):
             min = delayList[i]
-    print (min)
-    packet_min = min * 100
+    #print (min)
+    packet_min = min * 1000
 
     max=delayList[0]
     for i in range(0, len(delayList)):
         if(delayList[i] > max):
             max = delayList[i]
-    print (max)
-    packet_max = max * 100
+    #print (max)
+    packet_max = max * 1000
 
     avg = sum(delayList) / len(delayList)
-    print(avg)
-    packet_avg = avg * 100
+    #print(avg)
+    packet_avg = avg * 1000
 
-    standard_deviation = statistics.stdev(delayList)
-    stdev_var = delayList
-    testing = str(round(statistics.stdev(stdev_var)*100, 2))
-    print(testing)
+    standard_deviation = statistics.stdev(delayList)*1000
+    
+    
+    stdev_var = standard_deviation
+    
     
 
 
 
 
-    vars = [str(round(packet_min, 2)), str(round(packet_avg, 2)), str(round(packet_max, 2)), str(round(statistics.stdev(stdev_var)*100, 2))]
+    vars = [str(round(packet_min, 2)), str(round(packet_avg, 2)), str(round(packet_max, 2)), str(round(stdev_var, 2))]
 
     print(packet_min)
     print(packet_max)
